@@ -53,10 +53,11 @@ async function remove(req,res) {
         let puntuacionId = req.params.id;
         let puntuacionBorrada = await Puntuacion.findByIdAndRemove(puntuacionId)
         if(!puntuacionBorrada ) {
-            res.status(404).send({accion:'remove', mensaje:`error no existe el id a borrar. ${err}`})
-        }else{
-            res.status(200).send({accion:'remove', datos: puntuacionBorrada})
+           return res.status(404).send({accion:'remove', mensaje:`error no existe el id a borrar. ${err}`})
         }
+        
+        res.status(200).send({accion:'remove', datos: puntuacionBorrada})
+        
     }catch(err){
         res.status(500).send({accion:'remove', mensaje:`error al borrar la puntuacion. ${err}`})
     }
@@ -68,10 +69,11 @@ async function update(req,res){
         let puntuacionId = req.params.id;
         let puntuacionActualizada = await Puntuacion.findByIdAndUpdate(puntuacionId, datos)
         if(!puntuacionActualizada ) {
-            res.status(404).send({accion:'update', mensaje:`error no existe el id a actualizar. ${err}`})
-        }else{
-            res.status(200).send({accion:'update', datos: puntuacionActualizada})
+            return res.status(404).send({accion:'update', mensaje:`error no existe el id a actualizar. ${err}`})
         }
+        
+        res.status(200).send({accion:'update', datos: puntuacionActualizada})
+        
     }catch(err){
         res.status(500).send({accion:'update', mensaje:`error al acttualizar la puntuacion ${err}`})
     }
