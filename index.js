@@ -28,13 +28,10 @@ app.use('/puntuacion', routerPuntuacion)
 });*/
 
 
-//TODO: quitar
-app.get('/', (req, res)=>{
-    res.status(200).send("Hola Angel");
-})
 
-// TODO login
-
+// TODO add usuarios (email, password, nombre, ...) -> relaciones 1 a n
+// TODO login (jwt) +  login con goole, login facebook, ...
+// TODO validaciones
 
 
 /*mongoose.connect('mongodb://localhost:27018/scores', {useFindAndModify:true, useNewUrlParser: true, useUnifiedTopology: true} , (err, res)=>{
